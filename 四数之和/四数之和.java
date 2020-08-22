@@ -1,29 +1,33 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
-        //结果列表
         List<List<Integer>> lists=new ArrayList<>();
-        for (int i = 0; i < nums.length-2; i++) {
-            if (i==0||i>0&&nums[i]!=nums[i-1])
-            {
-                int l = i + 1,r=nums.length-1,sum=0-nums[i];
-                while (l<r)
+        for(int i=0;i<nums.length;i++)
+        {
+            if (i>0&&nums[i]==nums[i-1])
+                continue;
+            int newtarget=target-nums[i];//新的target
+            for (int j = i+1; j < nums.length; j++) {
+                if (j>i+1&&nums[j]==nums[j-1])
+                    continue;
+                int newtarget1=newtarget-nums[j];
+                int start=j+1,end=nums.length-1;
+                while (start<end)
                 {
-                    if (nums[l]+nums[r]==sum)
+                    if (nums[start]+nums[end]==newtarget1)
                     {
-                        lists.add(Arrays.asList(nums[i],nums[l],nums[r]));
-                        while (l<r&&nums[l]==nums[l+1]) l++;
-                        while (l<r&&nums[r]==nums[r-1]) r--;
-                        l++;
-                        r--;
-                    }else if (nums[l]+nums[r]<sum)
-                    {
-                        while (l<r&&nums[l]==nums[l+1]) l++;
-                        l++;
-                    }else {
-                        while (l<r&&nums[r]==nums[r-1]) r--;
-                        r--;
+                        lists.add(Arrays.asList(nums[i],nums[j],nums[start],nums[end]));
+                        while (start<end&&nums[start]==nums[start+1])
+                            start++;
+                        while (start<end&&nums[end]==nums[end-1])
+                            end--;
+                        start++;
+                        end--;
                     }
+                    else if (nums[start]+nums[end]>newtarget1)
+                        end--;
+                    else 
+                        start++;
                 }
             }
         }
