@@ -6,5 +6,26 @@
 
 # 中序遍历
 
-中序遍历需要利用到二叉搜索树的特性，也就是二叉搜索树的中序遍历结果是一个递增的序列。我们可以做一个中序遍历，如果有元素小于之前的元素，则可以直接返回false。
+中序遍历需要利用到二叉搜索树的特性，**也就是二叉搜索树的中序遍历结果是一个递增的序列**。我们可以做一个中序遍历，如果有元素小于之前的元素，则可以直接返回false。
 如果可以完成整个树的遍历，则返回true。
+
+```java
+class Solution {
+    long pre = Long.MIN_VALUE;
+    public boolean isValidBST(TreeNode root) {
+        if (root != null) {
+            if (!isValidBST(root.left)) {
+                return false;
+            }
+            if (root.val <= pre) {
+                return false;
+            }
+            pre = root.val;
+            if (!isValidBST(root.right)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
