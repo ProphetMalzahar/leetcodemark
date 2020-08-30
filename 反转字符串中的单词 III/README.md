@@ -11,7 +11,7 @@
 
 ## 1、直接利用StringBuilder的reverse
 
-要注意空格
+要注意后面的空格
 ```java
 class Solution {
     public String reverseWords(String s) {
@@ -34,6 +34,8 @@ class Solution {
 ```
 
 ## 2、差不多的思路，写一个逆转的函数，转成字符数组，根据空格分隔，然后逐步调用。
+
+
 ```java
 class Solution {
     public String reverseWords(String s) {
@@ -63,3 +65,5 @@ class Solution {
     }
 }
 ```
+
+两个复杂度都差不多。
