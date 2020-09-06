@@ -17,7 +17,7 @@ class Solution {
         Arrays.fill(last,-1);
         int n = s.length();
         int len = 0;
-        // 窗口左位置
+        // 窗口左边位置
         int start = 0;
         for(int i = 0; i < n; i++) {
             int ch=s.charAt(i);
@@ -32,12 +32,10 @@ class Solution {
 稍微改改可以变成那位面试官需要的结果:
 ```java
     public static String lengthOfLongestSubstring(String s) {
-        // 记录字符上一次出现的位置
         int[] last = new int[128];
         Arrays.fill(last,-1);
         int n = s.length();
         int len = 0;
-        // 窗口开始位置
         int left=0;
         int start = 0;
         for(int i = 0; i < n; i++) {
