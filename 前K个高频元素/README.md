@@ -39,7 +39,7 @@ class Solution {
 ```
 
 ## 使用LFU解法
-非常巧妙，来自评论区https://leetcode-cn.com/problems/top-k-frequent-elements/solution/fei-biao-zhun-jie-fa-shou-gong-chuang-jian-lfutong/
+非常巧妙，来自评论区[链接](https://leetcode-cn.com/problems/top-k-frequent-elements/solution/fei-biao-zhun-jie-fa-shou-gong-chuang-jian-lfutong/)
 
 对输入数组进行扫描, 添加至 LFU, 添加操作每步均为 O(1) 整体复杂度为 O(N)。
 
