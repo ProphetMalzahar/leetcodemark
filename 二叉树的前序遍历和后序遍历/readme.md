@@ -2,6 +2,7 @@
 
 二叉树的三种遍历也是面试的常考点，今天写一写就当做是复习了。
 
+[这是中序遍历](https://github.com/ProphetMalzahar/leetcodemark/tree/master/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86)
 ## 二叉树的前序遍历
 
 ### 递归
@@ -96,6 +97,21 @@ class Solution {
 ```
 ### 迭代
 ```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> list=new ArrayList<>();
@@ -115,15 +131,16 @@ class Solution {
                 cur=cur.left;
             }
             cur=stack.peek();
-            //为右子树
-            if(cur.right==null||cur.right==p)
+            //如果是右子树就退回上一层的父节点
+            if(cur.right==p||cur.right==null)
             {
                 list.add(cur.val);
                 stack.pop();
                 p=cur;
                 cur=null;
             }
-            else{
+            else
+            {
                 cur=cur.right;
             }
         }
