@@ -56,3 +56,78 @@ class Solution {
     }
 }
 ```
+
+## 后序遍历
+
+### 递归
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list=new ArrayList<>();
+        postorder(list,root);
+        return list;
+    }
+    public void postorder(List<Integer> list,TreeNode root)
+    {
+        if(root==null)
+        {
+            return;
+        }
+        postorder(list,root.left);
+        postorder(list,root.right);
+        list.add(root.val);
+    }
+}
+```
+### 迭代
+```java
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list=new ArrayList<>();
+        if(root==null)
+        {
+            return list;
+        }
+        //记录上一个节点
+        TreeNode p=null;
+        Stack<TreeNode> stack=new Stack<>();
+        TreeNode cur=root;
+        while(cur!=null||!stack.isEmpty())
+        {
+            while(cur!=null)
+            {
+                stack.push(cur);
+                cur=cur.left;
+            }
+            cur=stack.peek();
+            //为右子树
+            if(cur.right==null||cur.right==p)
+            {
+                list.add(cur.val);
+                stack.pop();
+                p=cur;
+                cur=null;
+            }
+            else{
+                cur=cur.right;
+            }
+        }
+        return list;
+    }
+}
+```
