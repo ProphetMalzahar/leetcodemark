@@ -35,6 +35,7 @@ class Solution {
 ```
 ## 分治法
 来自官方题解
+(链接)[https://leetcode-cn.com/problems/maximum-subarray/solution/zui-da-zi-xu-he-by-leetcode-solution/]
 ```java
 class Solution {
     public class Status {
@@ -71,3 +72,4 @@ class Solution {
     }
 }
 ```
+
